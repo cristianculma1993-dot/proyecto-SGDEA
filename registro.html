@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario - SGDEA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        body { background-color: #f0f2f5; font-family: 'Segoe UI', sans-serif; }
+        nav { background-color: #1a237e !important; }
+        .brand-logo img { height: 45px; margin-top: 8px; filter: brightness(0) invert(1); }
+        .form-card { padding: 40px; background: white; border-radius: 12px; margin-top: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+        .btn-save { background-color: #2e7d32; width: 100%; margin-top: 20px; }
+        .btn-list { background-color: #0d47a1; width: 100%; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-wrapper" style="padding: 0 20px;">
+            <a href="#" class="brand-logo">SGDEA</a>
+            <ul id="nav-mobile" class="right">
+                <li><a href="login.html" class="btn blue darken-4">Volver al Inicio</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="form-card">
+            <h4 class="center-align" style="color: #1a237e;">Registro de Usuario</h4>
+            <form id="registroForm">
+                <div class="row">
+                    <div class="input-field col s12 m6"><input type="text" required><label>Nombres</label></div>
+                    <div class="input-field col s12 m6"><input type="text" required><label>Apellidos</label></div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m4">
+                        <select>
+                            <option value="" disabled selected>Seleccione...</option>
+                            <option value="CC">Cédula de Ciudadanía</option>
+                            <option value="CE">Cédula de Extranjería</option>
+                            <option value="NIT">NIT</option>
+                        </select><label>Tipo de Documento</label>
+                    </div>
+                    <div class="input-field col s12 m4"><input type="text" required><label>Número de Documento</label></div>
+                    <div class="input-field col s12 m4"><input type="email" required><label>Correo Electrónico</label></div>
+                </div>
+                
+                <div class="row">
+                    <div class="input-field col s12 m2"><input type="text" required><label>Cargo</label></div>
+                    <div class="input-field col s12 m2"><input type="text" required><label>Área</label></div>
+                    <div class="input-field col s12 m2"><input type="text" required><label>EPS</label></div>
+                    <div class="input-field col s12 m2"><input type="text" required><label>ARL</label></div>
+                    <div class="input-field col s12 m4">
+                        <select>
+                            <option value="" disabled selected>Seleccione el rol</option>
+                            <option value="admin">Administrador</option>
+                            <option value="user">Usuario</option>
+                        </select><label>Rol del Sistema</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12 m6"><input type="text" value="Temp123456" disabled><label>Contraseña Momentánea</label></div>
+                    <div class="col s12 m6" style="margin-top: 25px;">
+                        <label><input type="checkbox" checked="checked"><span>Forzar cambio de contraseña</span></label>
+                    </div>
+                </div>
+                
+                <button type="button" class="btn btn-large btn-save waves-effect" onclick="guardarYSalir()">GUARDAR REGISTRO</button>
+                <a href="planillas.html" class="btn btn-large btn-list waves-effect">VER PLANILLA DE USUARIOS</a>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('select');
+            M.FormSelect.init(elems);
+        });
+
+        function guardarYSalir() {
+            // Aquí podrías agregar validaciones adicionales si lo necesitas
+            alert("Usuario registrado correctamente");
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+</html>
