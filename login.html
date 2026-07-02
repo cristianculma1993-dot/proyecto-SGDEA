@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,20 +8,126 @@
     <!-- Materialize CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <style>
-        body { background-color: #f4f7f6; display: flex; min-height: 100vh; flex-direction: column; }
-        main { flex: 1 0 auto; padding-top: 20px; }
-        
-        /* Estilos */  
-        .nav-wrapper { padding: 0 20px; background-color: #0d47a1; }
-        .brand-logo { font-weight: bold; color: white; }
-        .login-card { padding: 40px; border-radius: 15px; background: white; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-        .btn-login { background-color: #1976d2; transition: all 0.3s ease; border-radius: 25px; width: 100%; margin-top: 10px; }
-        .btn-login:hover { background-color: #1565c0; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(25,118,210,0.4); }
-        
+        body {
+            background-color: #f4f7f6;
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1 0 auto;
+            padding-top: 20px;
+        }
+
+        /* Barra y marca */
+        .nav-wrapper {
+            padding: 0 20px;
+            background-color: #0d47a1;
+        }
+
+        .brand-logo {
+            font-weight: bold;
+            color: white;
+        }
+
+        /* Botones */
+        .btn-login {
+            background-color: #1976d2;
+            transition: all 0.3s ease;
+            border-radius: 25px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .btn-login:hover {
+            background-color: #1565c0;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(25, 118, 210, 0.4);
+        }
+
         /* Footer azul oscuro */
-        footer.page-footer { background-color: #0d47a1 !important; color: #ffffff !important; padding: 15px 0; font-size: 0.85rem; }
+        footer.page-footer {
+            background-color: #0d47a1 !important;
+            color: #ffffff !important;
+            padding: 15px 0;
+            font-size: 0.85rem;
+        }
+
+        /* Layout para formulario a la izquierda e imagen a la derecha */
+        .login-row {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            /* mantiene el card a la izquierda */
+            min-height: calc(100vh - 160px);
+            /* ajusta para respetar header y footer */
+            gap: 24px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        /* Card del login */
+        .login-card {
+            padding: 40px;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            max-width: 450px;
+            /* evita que el card sea muy ancho */
+            margin: 0;
+        }
+
+        /* Caja de imagen: asegura que la imagen no quede tapada y tenga borde redondeado */
+        .image-box {
+            height: 420px;
+            /* ajusta la altura para que cuadre con el card */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+            background: transparent;
+            width: 100%;
+        }
+
+        /* Imagen responsiva que ocupa el área sin deformarse */
+        .responsive-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            /* muestra logo completo, ajuste sin recortar */
+            background: transparent;
+            display: block;
+        }
+
+        /* Ajuste para que en pantallas grandes la columna derecha no quede muy estrecha */
+        .col-image-wrapper {
+            padding-left: 0;
+        }
+
+        /* En pantallas pequeñas volvemos a una sola columna (imagen oculta) */
+        @media only screen and (max-width: 600px) {
+            .login-row {
+                display: block;
+                min-height: auto;
+                padding-top: 20px;
+            }
+
+            .image-box {
+                display: none;
+            }
+
+            .login-card {
+                margin: 0 auto;
+            }
+
+            /* centra el card en móvil */
+        }
     </style>
 </head>
+
 <body>
 
     <!-- Menú de Navegación -->
@@ -36,8 +143,9 @@
 
     <main>
         <div class="container">
-            <div class="row">
-                <div class="col s12 m6 offset-m3">
+            <div class="row login-row">
+                <!-- Columna izquierda: formulario -->
+                <div class="col s12 m5">
                     <div class="login-card">
                         <h4 class="center-align" style="color: #0d47a1;">Iniciar Sesión</h4>
                         <form id="loginForm">
@@ -56,14 +164,23 @@
                                     <option value="2">Usuario</option>
                                 </select>
                             </div>
-                             
+
                             <button type="submit" class="btn btn-large btn-login">INGRESAR</button>
-                            
-                            <!-- Opción de recuperación -->
+
                             <div class="center-align" style="margin-top: 20px;">
-                                <a href="cambio_contraseña.html" style="color: #0d47a1; font-size: 0.9rem; text-decoration: underline;">¿Olvidaste tu contraseña?</a>
+                                <a href="cambio_contraseña.html"
+                                    style="color: #0d47a1; font-size: 0.9rem; text-decoration: underline;">¿Olvidaste tu
+                                    contraseña?</a>
                             </div>
                         </form>
+                    </div>
+                </div>
+
+                <!-- Columna derecha: imagen (alineada a la derecha, visible en tablet/pc) -->
+                <div class="col s12 m7 hide-on-small-only col-image-wrapper">
+                    <div class="image-box">
+                        <!-- Si la imagen está en una carpeta 'img', cambia a src="img/SGDEA.PNG" -->
+                        <img src="imagenes/SGDEA.jpg" alt="SGDEA" class="responsive-logo">
                     </div>
                 </div>
             </div>
@@ -77,14 +194,16 @@
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             M.FormSelect.init(document.querySelectorAll('select'));
         });
 
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
             e.preventDefault();
+            // redirige a la página de cambio de contraseña para demo
             window.location.href = "cambio_contraseña.html";
         });
     </script>
 </body>
+
 </html>
